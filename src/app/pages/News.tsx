@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 
 export function News() {
   const [newsList, setNewsList] = useState<any[]>([]);

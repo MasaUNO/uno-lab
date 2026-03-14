@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Mail, MapPin } from "lucide-react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 
 export function Contact() {
   const [pageData, setPageData] = useState<any>(null);

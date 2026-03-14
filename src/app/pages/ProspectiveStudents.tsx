@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 import { BlockRenderer } from "../components/BlockRenderer";
 
 export function ProspectiveStudents() {

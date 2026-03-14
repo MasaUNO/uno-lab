@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 import { BlockRenderer } from "../components/BlockRenderer";
 
 export function NewsDetail() {
@@ -102,7 +102,12 @@ export function NewsDetail() {
 
       {related.length > 0 && (
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <h3 className="text-xl mb-6">More News</h3>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-bold">More News</h3>
+            <Link to="/news" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+              View All News
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {related.map((relatedNews) => (
               <Link

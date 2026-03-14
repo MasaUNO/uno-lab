@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

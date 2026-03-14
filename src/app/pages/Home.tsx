@@ -6,7 +6,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 
 const heroImages = [
   "https://images.unsplash.com/photo-1760493828288-d2dbb70d18c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWJvcmF0b3J5JTIwcmVzZWFyY2glMjBzY2llbmNlJTIwbWljcm9zY29wZXxlbnwxfHx8fDE3NzMzMjQzOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -87,17 +87,19 @@ export function Home() {
       <div className="h-screen relative overflow-hidden bg-gray-900">
         <div className="absolute inset-0 z-0">
           {imagesToDisplay.length > 0 && (
-            <Slider {...{ ...sliderSettings, dots: false, arrows: false }} className="h-full">
+            <Slider {...{ ...sliderSettings, dots: false, arrows: false }} className="h-full w-full">
               {imagesToDisplay.map((image: string, index: number) => (
-                <div key={index} className="h-screen w-full">
-                  <div
-                    className="w-full h-full bg-cover bg-center transition-opacity duration-1000"
-                    style={{
-                      backgroundImage: `url(${image})`,
+                <div key={index} className="h-screen w-full relative">
+                  <img
+                    src={image}
+                    alt=""
+                    className="w-full h-full object-cover transition-opacity duration-1000"
+                    onLoad={(e) => (e.currentTarget.style.opacity = "1")}
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1713470093936-d45b536f486b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080";
                     }}
-                  >
-                    <div className="absolute inset-0 bg-black bg-opacity-40" />
-                  </div>
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-10" />
                 </div>
               ))}
             </Slider>

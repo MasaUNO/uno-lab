@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 import { BlockRenderer } from "../components/BlockRenderer";
 
 export function ResearchMethodDetail() {

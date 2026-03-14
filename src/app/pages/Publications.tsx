@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import client from "../../../tina/__generated__/client";
+import client from "../client";
 
 export function Publications() {
   const [publications, setPublications] = useState<any[]>([]);
