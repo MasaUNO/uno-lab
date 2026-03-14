@@ -1,10 +1,31 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
-import { researchTopics } from "../data/mockData";
 import { ArrowLeft } from "lucide-react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import client from "../../../tina/__generated__/client";
+import { BlockRenderer } from "../components/BlockRenderer";
 
 export function ResearchTopicDetail() {
   const { id } = useParams();
-  const topic = researchTopics.find((t) => t.id === id);
+  const [topic, setTopic] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!id) return;
+      try {
+        const res = await client.queries.research_topics({ relativePath: id });
+        setTopic(res.data.research_topics);
+      } catch (error) {
+        console.error("Error fetching Tina data", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  if (loading) return <div>Loading...</div>;
 
   if (!topic) {
     return (
@@ -35,72 +56,27 @@ export function ResearchTopicDetail() {
         className="w-full h-96 object-cover rounded-lg mb-8"
       />
 
-      <div className="prose prose-lg max-w-none">
+      <div className="prose prose-lg max-w-none mb-12">
         <p className="text-xl text-gray-700 mb-6">{topic.description}</p>
         
-        <div className="text-gray-700 leading-relaxed">
-          {topic.content}
-        </div>
-
-        <section className="mt-12">
-          <h2 className="text-3xl mb-4">Research Objectives</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>Understand the fundamental mechanisms of fluid-rock interactions</li>
-            <li>Quantify reaction rates and transport processes</li>
-            <li>Develop predictive models for natural systems</li>
-            <li>Apply findings to societal challenges</li>
-          </ul>
-        </section>
-
-        <section className="mt-12">
-          <h2 className="text-3xl mb-4">Methodology</h2>
-          <p className="text-gray-700">
-            Our approach combines multiple techniques to provide comprehensive insights:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">Field Studies</h3>
-              <p className="text-sm text-gray-600">
-                Direct observation and sampling from natural settings
-              </p>
-            </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">Laboratory Experiments</h3>
-              <p className="text-sm text-gray-600">
-                Controlled experiments under various conditions
-              </p>
-            </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">Numerical Modeling</h3>
-              <p className="text-sm text-gray-600">
-                Computer simulations and data analysis
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-12">
-          <h2 className="text-3xl mb-4">Key Publications</h2>
-          <ol className="list-decimal list-inside space-y-2 text-gray-700">
-            <li>Uno, M., et al. (2026). Recent advances in this research area. Nature Geoscience.</li>
-            <li>Tanaka, Y., & Uno, M. (2025). Experimental constraints on reaction kinetics. GCA.</li>
-            <li>Yamamoto, H., & Uno, M. (2024). Field observations and implications. EPSL.</li>
-          </ol>
-        </section>
-
-        <section className="mt-12 bg-blue-50 p-6 rounded-lg">
-          <h2 className="text-2xl mb-4">Interested in This Research?</h2>
-          <p className="text-gray-700 mb-4">
-            If you are interested in pursuing research in this area, please contact us for more information about graduate student opportunities.
-          </p>
-          <Link
-            to="/prospective-students"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Learn More
-          </Link>
-        </section>
+        <TinaMarkdown content={topic.content} />
       </div>
+
+      {/* Flexible Blocks */}
+      <BlockRenderer blocks={topic.blocks} />
+
+      <section className="mt-16 bg-blue-50 p-6 rounded-lg">
+        <h2 className="text-2xl mb-4">Interested in This Research?</h2>
+        <p className="text-gray-700 mb-4">
+          If you are interested in pursuing research in this area, please contact us for more information about graduate student opportunities.
+        </p>
+        <Link
+          to="/prospective-students"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Learn More
+        </Link>
+      </section>
     </div>
   );
 }

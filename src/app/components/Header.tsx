@@ -11,6 +11,7 @@ export function Header() {
     { path: "/about", label: "About" },
     { path: "/research", label: "Research" },
     { path: "/members", label: "Members" },
+    { path: "/fields", label: "Fields" },
     { path: "/news", label: "News" },
     { path: "/publications", label: "Publications" },
     { path: "/gallery", label: "Gallery" },

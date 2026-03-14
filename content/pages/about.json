@@ -1,0 +1,28 @@
+{
+  "title": "About us",
+  "blocks": [
+    {
+      "images": [
+        "/IMGP8091.jpeg"
+      ],
+      "_template": "hero"
+    },
+    {
+      "body": "## Our Mission\n\n地震波観測やGPSなど地下の観測技術の進んだ現代ほど，人類が大地の変動を実感している時代はありません．地震，火山，鉱床，地熱資源．CO2岩石固定，沈み込み帯に住む我々には大地の変動と恵みがもたらされます．こうした地殻現象を予測したり，活用したりして人類が持続可能な社会を築くためには，この地球内部の変動を理解し予測する，動的な現象を扱う新たな地球内部の物質科学が必要です．\n\nいま，地球内部で，あるいは日本列島の地下でなにが起きているのか？我々はそれを理解・予測し，活用することができるのか？　岩石を様々な方法で観察・分析するとその答えが見えてきます．私たちは，野外地質調査，化学分析，水熱反応実験，数値シミュレーション，統計・機械学習を駆使して，地球内部の動的な変動現象を深く理解し，予測・活用することを目指しています．\n",
+      "_template": "richText"
+    },
+    {
+      "body": "## Research Philosophy\n\n複雑な地球内部の自然現象を理解したり予測・活用するためには，自然の観察から問題を提起し，その本質を実験で確かめ，理論計算からその妥当性と予測性を探求することが大事です．私たちの研究室では，フィールド調査，独自の水熱反応実験，数値シミュレーションや機械学習を駆使しています．\n",
+      "_template": "richText"
+    },
+    {
+      "title": "Research Topics",
+      "_template": "researchCards"
+    },
+    {
+      "body": "## Collaborations\n\nWe maintain active collaborations with research institutions worldwide, including:\n\n- Tohoku University, Japan\n- JAMSTEC (Japan Agency for Marine-Earth Science and Technology)\n- Geological Survey of Japan\n- US Geological Survey\n",
+      "_template": "richText"
+    }
+  ],
+  "_template": "about"
+}

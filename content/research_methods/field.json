@@ -1,0 +1,12 @@
+{
+  "title": "Field survey　フィールド調査",
+  "description": "Field observations and sample collection from natural geological settings.",
+  "content": "Our field research involves collecting rock and fluid samples from various geological settings, including high-pressure and high-temperature metamorphic belts, ophiolites, fault zones, and magmatic-hydrothermal areas.\n",
+  "image": "/PB190210.jpg",
+  "blocks": [
+    {
+      "body": "Field gears: Drones, Infra-red spectrometer,…\n",
+      "_template": "richText"
+    }
+  ]
+}

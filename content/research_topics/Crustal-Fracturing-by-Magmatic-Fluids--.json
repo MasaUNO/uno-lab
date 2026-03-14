@@ -1,0 +1,17 @@
+{
+  "title": "Crustal fracturing by magmatic fluids  マグマ性流体による地殻破壊",
+  "content": "",
+  "image": "/IMGP0995のコピー.jpg",
+  "blocks": [
+    {
+      "body": "フィールド：東南極セール・ロンダーネ山地\n",
+      "_template": "richText"
+    },
+    {
+      "images": [
+        "/DJI_0857.JPG"
+      ],
+      "_template": "imageGrid"
+    }
+  ]
+}

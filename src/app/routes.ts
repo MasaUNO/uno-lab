@@ -13,6 +13,8 @@ import { ResearchTopicDetail } from "./pages/ResearchTopicDetail";
 import { ResearchMethodDetail } from "./pages/ResearchMethodDetail";
 import { MemberDetail } from "./pages/MemberDetail";
 import { NewsDetail } from "./pages/NewsDetail";
+import { Fields } from "./pages/Fields";
+import { FieldDetail } from "./pages/FieldDetail";
 import { NotFound } from "./pages/NotFound";
 
 export const router = createBrowserRouter([
@@ -27,6 +29,8 @@ export const router = createBrowserRouter([
       { path: "research/method/:id", Component: ResearchMethodDetail },
       { path: "members", Component: Members },
       { path: "members/:id", Component: MemberDetail },
+      { path: "fields", Component: Fields },
+      { path: "fields/:id", Component: FieldDetail },
       { path: "news", Component: News },
       { path: "news/:id", Component: NewsDetail },
       { path: "publications", Component: Publications },

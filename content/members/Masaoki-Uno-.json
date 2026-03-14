@@ -1,0 +1,24 @@
+{
+  "name": "Masaoki Uno 宇野正起",
+  "role": "Lab head",
+  "bio": "",
+  "order": 1,
+  "research": "Fluid-rock interactions, Petrology of slow-to-fast seismogenic zones, Mineral carbonation, Reaction-induced fracturing, Super critical geothermal reservoir, Geochemical machine-learning",
+  "email": "masa.uno@eps.s.u-tokyo.ac.jp",
+  "image": "/南極斜面サンプリング4.jpeg",
+  "blocks": [
+    {
+      "_template": "hero"
+    },
+    {
+      "images": [
+        "/IMGP8091.jpeg"
+      ],
+      "_template": "imageGrid"
+    },
+    {
+      "body": "# **Test Test**\n\nmain text\n",
+      "_template": "richText"
+    }
+  ]
+}

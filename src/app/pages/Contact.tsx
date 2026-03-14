@@ -1,31 +1,44 @@
+import { useEffect, useState } from "react";
 import { Mail, MapPin } from "lucide-react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import client from "../../../tina/__generated__/client";
 
 export function Contact() {
+  const [pageData, setPageData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await client.queries.pages({ relativePath: "contact.json" });
+        setPageData(res.data.pages);
+      } catch (error) {
+        console.error("Error fetching Tina data", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (!pageData) return <div>Loading...</div>;
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="text-4xl mb-12">Contact</h1>
+      <h1 className="text-4xl mb-12">{pageData.title || "Contact"}</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
           <h2 className="text-2xl mb-6">Get in Touch</h2>
-          <p className="text-gray-700 mb-8">
-            お問い合わせは以下のフォームまたは直接メールでご連絡ください。
-            研究室訪問も歓迎します。
-          </p>
+          <div className="text-gray-700 mb-8 prose prose-lg max-w-none">
+            <TinaMarkdown content={pageData.description} />
+          </div>
 
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <MapPin className="text-blue-600 mt-1 flex-shrink-0" size={24} />
               <div>
                 <h3 className="font-semibold mb-2">Address</h3>
-                <p className="text-gray-700">
-                  Uno Laboratory<br />
-                  Department of Earth and Planetary Science<br />
-                  Graduate School of Science<br />
-                  The University of Tokyo<br />
-                  7-3-1 Hongo, Bunkyo-ku<br />
-                  Tokyo 113-0033, Japan
-                </p>
+                <div className="text-gray-700 prose prose-sm max-w-none">
+                  <TinaMarkdown content={pageData.address} />
+                </div>
               </div>
             </div>
 
@@ -33,9 +46,8 @@ export function Contact() {
               <Mail className="text-blue-600 mt-1 flex-shrink-0" size={24} />
               <div>
                 <h3 className="font-semibold mb-2">Email</h3>
-                <p className="text-gray-700">
-                  contact@unolab.u-tokyo.ac.jp<br />
-                  uno@eps.s.u-tokyo.ac.jp
+                <p className="text-gray-700 whitespace-pre-line">
+                  {Array.isArray(pageData.email) ? pageData.email.join("\n") : pageData.email}
                 </p>
               </div>
             </div>
@@ -43,13 +55,9 @@ export function Contact() {
 
           <div className="mt-8 bg-gray-50 p-6 rounded-lg">
             <h3 className="font-semibold mb-3">Office Hours</h3>
-            <p className="text-gray-700">
-              月曜日 - 金曜日: 9:00 - 17:00<br />
-              土日祝日: 休業<br />
-              <span className="text-sm text-gray-600">
-                ※訪問の際は事前にメールでご連絡ください
-              </span>
-            </p>
+            <div className="text-gray-700 prose prose-sm max-w-none">
+              <TinaMarkdown content={pageData.officeHours} />
+            </div>
           </div>
         </div>
 
