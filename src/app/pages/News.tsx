@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import client from "../client";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function News() {
   const [newsList, setNewsList] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +47,7 @@ export function News() {
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
           >
             <img
-              src={news.image}
+              src={imagePath(news.image)}
               alt={news.title}
               className="w-full h-56 object-cover"
             />

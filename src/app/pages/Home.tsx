@@ -8,6 +8,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import client from "../client";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 const heroImages = [
   "https://images.unsplash.com/photo-1760493828288-d2dbb70d18c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWJvcmF0b3J5JTIwcmVzZWFyY2glMjBzY2llbmNlJTIwbWljcm9zY29wZXxlbnwxfHx8fDE3NzMzMjQzOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
   "https://images.unsplash.com/photo-1713470093936-d45b536f486b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW9sb2d5JTIwcm9jayUyMGZvcm1hdGlvbiUyMGZpZWxkJTIwd29ya3xlbnwxfHx8fDE3NzMzMjQzOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -156,7 +166,7 @@ export function Home() {
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <img
-                  src={news.image}
+                  src={imagePath(news.image)}
                   alt={news.title}
                   className="w-full h-48 object-cover"
                 />
@@ -189,7 +199,7 @@ export function Home() {
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <img
-                  src={topic.image}
+                  src={imagePath(topic.image)}
                   alt={topic.title}
                   className="w-full h-48 object-cover"
                 />
@@ -224,7 +234,7 @@ export function Home() {
                   className="aspect-square bg-gray-200 rounded-lg overflow-hidden"
                 >
                   <img
-                    src={img.url}
+                    src={imagePath(img.url)}
                     alt={img.caption || ""}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                   />

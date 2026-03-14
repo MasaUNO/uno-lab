@@ -3,6 +3,16 @@ import { Link } from "react-router";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../client";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function Members() {
   const [members, setMembers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,7 +45,7 @@ export function Members() {
       className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow flex flex-col h-full"
     >
       <img
-        src={member.image}
+        src={imagePath(member.image)}
         alt={member.name}
         className="w-full h-64 object-cover"
       />

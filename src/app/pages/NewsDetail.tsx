@@ -5,6 +5,16 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../client";
 import { BlockRenderer } from "../components/BlockRenderer";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function NewsDetail() {
   const { id } = useParams();
   const [news, setNews] = useState<any>(null);
@@ -62,7 +72,7 @@ export function NewsDetail() {
         <h1 className="text-4xl mb-8">{news.title}</h1>
 
         <img
-          src={news.image}
+          src={imagePath(news.image)}
           alt={news.title}
           className="w-full h-96 object-cover rounded-lg mb-8"
         />
@@ -116,7 +126,7 @@ export function NewsDetail() {
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <img
-                  src={relatedNews.image}
+                  src={imagePath(relatedNews.image)}
                   alt={relatedNews.title}
                   className="w-full h-40 object-cover"
                 />

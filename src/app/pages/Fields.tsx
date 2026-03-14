@@ -3,6 +3,16 @@ import { Link } from "react-router";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../client";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function Fields() {
   const [fields, setFields] = useState<any[]>([]);
   const [pageData, setPageData] = useState<any>(null);
@@ -50,7 +60,7 @@ export function Fields() {
           >
             <div className="aspect-[16/10] overflow-hidden">
               <img
-                src={field.image || "https://images.unsplash.com/photo-1531870856481-49a0ce6d0698?auto=format&fit=crop&q=80"}
+                src={imagePath(field.image || "https://images.unsplash.com/photo-1531870856481-49a0ce6d0698?auto=format&fit=crop&q=80")}
                 alt={field.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />

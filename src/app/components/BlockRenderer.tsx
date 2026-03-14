@@ -1,6 +1,18 @@
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Link } from "react-router";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  // Handle local public paths that might have special characters
+  // decodeURI first to avoid double encoding if Tina already partially encoded it
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function BlockRenderer({ blocks, researchTopics }: { blocks: any[]; researchTopics?: any[] }) {
   if (!blocks) return null;
 
@@ -52,7 +64,7 @@ function HeroBlock({ images }: { images: string[] }) {
   return (
     <div className="grid grid-cols-1 gap-4">
       {validImages.map((img, i) => (
-        <img key={i} src={img} className="w-full h-[500px] object-cover rounded-xl shadow-lg" alt="" />
+        <img key={i} src={imagePath(img)} className="w-full h-[500px] object-cover rounded-xl shadow-lg" alt="" />
       ))}
     </div>
   );
@@ -64,7 +76,7 @@ function ImageGridBlock({ images }: { images: string[] }) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
       {validImages.map((img, i) => (
-        <img key={i} src={img} className="w-full h-64 object-cover rounded-lg" alt="" />
+        <img key={i} src={imagePath(img)} className="w-full h-64 object-cover rounded-lg" alt="" />
       ))}
     </div>
   );
@@ -105,7 +117,7 @@ function ResearchCardsBlock({ title, topics }: { title?: string; topics?: any[] 
           >
             {topic.image && (
               <img
-                src={topic.image}
+                src={imagePath(topic.image)}
                 alt={topic.title}
                 className="w-24 h-24 object-cover rounded-md flex-shrink-0"
               />
@@ -124,3 +136,4 @@ function ResearchCardsBlock({ title, topics }: { title?: string; topics?: any[] 
     </div>
   );
 }
+

@@ -5,6 +5,16 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../client";
 import { BlockRenderer } from "../components/BlockRenderer";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function MemberDetail() {
   const { id } = useParams();
   const [member, setMember] = useState<any>(null);
@@ -51,7 +61,7 @@ export function MemberDetail() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <div className="md:col-span-1">
           <img
-            src={member.image}
+            src={imagePath(member.image)}
             alt={member.name}
             className="w-full rounded-lg shadow-lg"
           />

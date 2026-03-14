@@ -4,6 +4,16 @@ import { ArrowLeft, MapPin } from "lucide-react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../client";
 
+const imagePath = (src: string) => {
+  if (!src) return src;
+  if (src.startsWith('http')) return src;
+  try {
+    return encodeURI(decodeURIComponent(src));
+  } catch (e) {
+    return encodeURI(src);
+  }
+};
+
 export function FieldDetail() {
   const { id } = useParams();
   const [field, setField] = useState<any>(null);
@@ -32,7 +42,7 @@ export function FieldDetail() {
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[400px]">
         <img
-          src={field.image || "https://images.unsplash.com/photo-1531870856481-49a0ce6d0698?auto=format&fit=crop&q=80"}
+          src={imagePath(field.image || "https://images.unsplash.com/photo-1531870856481-49a0ce6d0698?auto=format&fit=crop&q=80")}
           alt={field.title}
           className="w-full h-full object-cover"
         />
