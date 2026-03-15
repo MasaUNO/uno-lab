@@ -6,6 +6,9 @@ import { Research } from "./pages/Research";
 import { Members } from "./pages/Members";
 import { News } from "./pages/News";
 import { Publications } from "./pages/Publications";
+import { JournalArticles } from "./pages/JournalArticles";
+import { Awards } from "./pages/Awards";
+import { Grants } from "./pages/Grants";
 import { Gallery } from "./pages/Gallery";
 import { ProspectiveStudents } from "./pages/ProspectiveStudents";
 import { Contact } from "./pages/Contact";
@@ -34,6 +37,9 @@ export const router = createBrowserRouter([
       { path: "news", Component: News },
       { path: "news/:id", Component: NewsDetail },
       { path: "publications", Component: Publications },
+      { path: "publications/articles", Component: JournalArticles },
+      { path: "publications/awards", Component: Awards },
+      { path: "publications/grants", Component: Grants },
       { path: "gallery", Component: Gallery },
       { path: "prospective-students", Component: ProspectiveStudents },
       { path: "contact", Component: Contact },

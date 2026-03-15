@@ -235,6 +235,28 @@ export default defineConfig({
         ],
       },
       {
+        name: "awards",
+        label: "Awards (by Year)",
+        path: "content/awards",
+        format: "json",
+        fields: [
+          { type: "number", name: "year", label: "Year", required: true },
+          { type: "rich-text", name: "items", label: "Awards Items" },
+        ],
+      },
+      {
+        name: "grants",
+        label: "Grants & Funding",
+        path: "content/grants",
+        format: "json",
+        fields: [
+          { type: "string", name: "fundName", label: "Fund Name", isTitle: true, required: true },
+          { type: "string", name: "researchTitle", label: "Research Title" },
+          { type: "number", name: "yearStart", label: "Year (start)", required: true },
+          { type: "number", name: "yearEnd", label: "Year (end)" },
+        ],
+      },
+      {
         name: "gallery",
         label: "Gallery Images",
         path: "content/gallery",
@@ -295,6 +317,13 @@ export default defineConfig({
                       { type: "string", name: "title", label: "Title (Optional)" }
                     ],
                   },
+                  {
+                    name: "methodCards",
+                    label: "Research Method Cards",
+                    fields: [
+                      { type: "string", name: "title", label: "Title (Optional)" }
+                    ],
+                  },
                 ],
               },
             ]
@@ -312,7 +341,31 @@ export default defineConfig({
             label: "Fields Page",
             fields: [
               { type: "string", name: "title", label: "Title" },
-              { type: "rich-text", name: "description", label: "Description" },
+              {
+                type: "object",
+                name: "blocks",
+                label: "Sections",
+                list: true,
+                templates: [
+                  {
+                    name: "hero",
+                    label: "Hero",
+                    fields: [{ type: "image", name: "images", label: "Images", list: true }],
+                  },
+                  {
+                    name: "richText",
+                    label: "Rich Text Section",
+                    fields: [{ type: "rich-text", name: "body", label: "Body" }],
+                  },
+                  {
+                    name: "fieldCards",
+                    label: "Field Cards",
+                    fields: [
+                      { type: "string", name: "title", label: "Title (Optional)" }
+                    ],
+                  },
+                ],
+              },
             ]
           },
           {

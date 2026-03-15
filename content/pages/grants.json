@@ -1,0 +1,10 @@
+{
+  "title": "Grants & Funding",
+  "blocks": [
+    {
+      "body": "Ongoing and past research projects supported by various funding agencies.",
+      "_template": "richText"
+    }
+  ],
+  "_template": "grants_funding"
+}

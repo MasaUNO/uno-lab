@@ -13,7 +13,17 @@ const imagePath = (src: string) => {
   }
 };
 
-export function BlockRenderer({ blocks, researchTopics }: { blocks: any[]; researchTopics?: any[] }) {
+export function BlockRenderer({ 
+  blocks, 
+  researchTopics,
+  researchMethods,
+  fields
+}: { 
+  blocks: any[]; 
+  researchTopics?: any[];
+  researchMethods?: any[];
+  fields?: any[];
+}) {
   if (!blocks) return null;
 
   return (
@@ -26,6 +36,7 @@ export function BlockRenderer({ blocks, researchTopics }: { blocks: any[]; resea
           case "MembersBlocksHero":
           case "PagesAboutBlocksHero":
           case "PagesProspective_studentsBlocksHero":
+          case "PagesFields_pageBlocksHero":
             return <HeroBlock key={i} images={block.images} />;
           case "NewsBlocksImageGrid":
           case "Research_topicsBlocksImageGrid":
@@ -43,6 +54,7 @@ export function BlockRenderer({ blocks, researchTopics }: { blocks: any[]; resea
           case "MembersBlocksRichText":
           case "PagesAboutBlocksRichText":
           case "PagesProspective_studentsBlocksRichText":
+          case "PagesFields_pageBlocksRichText":
             return (
               <div key={i} className="prose prose-lg max-w-none">
                 <TinaMarkdown content={block.body} />
@@ -50,6 +62,10 @@ export function BlockRenderer({ blocks, researchTopics }: { blocks: any[]; resea
             );
           case "PagesAboutBlocksResearchCards":
             return <ResearchCardsBlock key={i} title={block.title} topics={researchTopics} />;
+          case "PagesAboutBlocksMethodCards":
+            return <MethodCardsBlock key={i} title={block.title} methods={researchMethods} />;
+          case "PagesFields_pageBlocksFieldCards":
+            return <FieldCardsBlock key={i} title={block.title} fields={fields} />;
           default:
             return null;
         }
@@ -107,13 +123,13 @@ function ResearchCardsBlock({ title, topics }: { title?: string; topics?: any[] 
   if (!topics || topics.length === 0) return null;
   return (
     <div className="my-12">
-      {title && <h2 className="text-3xl mb-8">{title}</h2>}
+      {title && <h2 className="text-3xl mb-8 font-bold">{title}</h2>}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {topics.map((topic) => (
           <Link
             key={topic.id}
             to={`/research/topic/${topic._sys.relativePath}`}
-            className="flex gap-6 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow p-4"
+            className="flex gap-6 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow p-4 group"
           >
             {topic.image && (
               <img
@@ -129,6 +145,77 @@ function ResearchCardsBlock({ title, topics }: { title?: string; topics?: any[] 
               <p className="text-gray-600 text-sm line-clamp-2">
                 {topic.description}
               </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MethodCardsBlock({ title, methods }: { title?: string; methods?: any[] }) {
+  if (!methods || methods.length === 0) return null;
+  return (
+    <div className="my-12">
+      {title && <h2 className="text-3xl mb-8 font-bold">{title}</h2>}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {methods.map((method) => (
+          <Link
+            key={method.id}
+            to={`/research/method/${method._sys.relativePath}`}
+            className="flex gap-6 bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow p-4 group"
+          >
+            {method.image && (
+              <img
+                src={imagePath(method.image)}
+                alt={method.title}
+                className="w-24 h-24 object-cover rounded-md flex-shrink-0"
+              />
+            )}
+            <div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                {method.title}
+              </h3>
+              <p className="text-gray-600 text-sm line-clamp-2">
+                {method.description}
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FieldCardsBlock({ title, fields }: { title?: string; fields?: any[] }) {
+  if (!fields || fields.length === 0) return null;
+  return (
+    <div className="my-12">
+      {title && <h2 className="text-3xl mb-8 font-bold">{title}</h2>}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {fields.map((field) => (
+          <Link
+            key={field.id}
+            to={`/fields/${field._sys.relativePath}`}
+            className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all overflow-hidden border border-gray-100"
+          >
+            <div className="aspect-[16/10] overflow-hidden">
+              <img
+                src={imagePath(field.image || "https://images.unsplash.com/photo-1531870856481-49a0ce6d0698?auto=format&fit=crop&q=80")}
+                alt={field.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                {field.title}
+              </h3>
+              <div className="text-gray-600 line-clamp-3 text-sm">
+                <TinaMarkdown content={field.description} />
+              </div>
+              <div className="mt-4 flex items-center text-blue-600 font-medium text-sm">
+                View Research Topics →
+              </div>
             </div>
           </Link>
         ))}

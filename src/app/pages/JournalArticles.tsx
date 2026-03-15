@@ -3,7 +3,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../client";
 import { ResearchOutputNav } from "../components/ResearchOutputNav";
 
-export function Publications() {
+export function JournalArticles() {
   const [publications, setPublications] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,7 +12,6 @@ export function Publications() {
       try {
         const res = await client.queries.publicationsConnection({ sort: "year" });
         const pubData = res.data.publicationsConnection.edges?.map(e => e?.node) || [];
-        // Sort descending by year
         pubData.sort((a, b) => (b?.year || 0) - (a?.year || 0));
         setPublications(pubData);
       } catch (error) {
@@ -52,5 +51,4 @@ export function Publications() {
     </div>
   );
 }
-
 

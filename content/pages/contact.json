@@ -1,11 +1,10 @@
 {
-  "_template": "contact",
   "title": "Contact",
-  "description": "お問い合わせは以下のフォームまたは直接メールでご連絡ください。研究室訪問も歓迎します。",
-  "address": "Uno Laboratory\nDepartment of Earth and Planetary Science\nGraduate School of Science\nThe University of Tokyo\n7-3-1 Hongo, Bunkyo-ku\nTokyo 113-0033, Japan",
+  "description": "研究室へのお問い合わせは以下のメールアドレスまで直接ご連絡ください。研究室訪問も歓迎します。\n",
+  "address": "Uno Laboratory\nDepartment of Earth and Planetary Science\nGraduate School of Science\nThe University of Tokyo\n7-3-1 Hongo, Bunkyo-ku\nTokyo 113-0033, Japan\n",
   "email": [
-    "contact@unolab.u-tokyo.ac.jp",
-    "uno@eps.s.u-tokyo.ac.jp"
+    "contact.unolab.utokyo@gmail.com"
   ],
-  "officeHours": "月曜日 - 金曜日: 9:00 - 17:00\n土日祝日: 休業\n※訪問の際は事前にメールでご連絡ください"
+  "officeHours": "",
+  "_template": "contact"
 }

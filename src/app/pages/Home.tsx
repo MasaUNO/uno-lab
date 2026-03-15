@@ -40,13 +40,13 @@ export function Home() {
         setPageData(pageRes.data.pages);
 
         const newsRes = await client.queries.newsConnection({ first: 3, sort: "date" });
-        setNewsList(newsRes.data.newsConnection.edges?.map(e => ({ id: e?.node?.id, ...e?.node })) || []);
+        setNewsList(newsRes.data.newsConnection.edges?.map((e: any) => ({ id: e?.node?.id, ...e?.node })) || []);
 
         const topicsRes = await client.queries.research_topicsConnection({ first: 3 });
-        setTopicsList(topicsRes.data.research_topicsConnection.edges?.map(e => ({ id: e?.node?.id, ...e?.node })) || []);
+        setTopicsList(topicsRes.data.research_topicsConnection.edges?.map((e: any) => ({ id: e?.node?.id, ...e?.node })) || []);
 
         const galleryRes = await client.queries.galleryConnection({ first: 10 });
-        setGalleryList(galleryRes.data.galleryConnection.edges?.map(e => ({ id: e?.node?.id, ...e?.node })) || []);
+        setGalleryList(galleryRes.data.galleryConnection.edges?.map((e: any) => ({ id: e?.node?.id, ...e?.node })).filter((img: any) => !!img.url) || []);
       } catch (error) {
         console.error("Error fetching Tina data", error);
       }
@@ -121,7 +121,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="bg-black bg-opacity-50 backdrop-blur-sm px-8 py-12 rounded-lg text-center max-w-3xl mx-4 pointer-events-auto"
+            className="bg-black bg-opacity-60 backdrop-blur-sm px-8 py-12 rounded-lg text-center max-w-3xl mx-4 pointer-events-auto"
           >
             <h1 className="text-white text-5xl md:text-6xl mb-4 whitespace-pre-line leading-tight">
               {pageData.heroTitle || "Welcome"}
@@ -252,7 +252,7 @@ export function Home() {
               <MapPin className="text-blue-600 mt-1 flex-shrink-0" size={24} />
               <div>
                 <h3 className="text-xl mb-4 font-semibold">Address</h3>
-                <div className="prose text-gray-700 max-w-none">
+                <div className="prose text-gray-700 max-w-none whitespace-pre-line">
                   <TinaMarkdown content={pageData.contactInfo?.address} />
                 </div>
               </div>

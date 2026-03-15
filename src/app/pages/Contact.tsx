@@ -36,7 +36,7 @@ export function Contact() {
               <MapPin className="text-blue-600 mt-1 flex-shrink-0" size={24} />
               <div>
                 <h3 className="font-semibold mb-2">Address</h3>
-                <div className="text-gray-700 prose prose-sm max-w-none">
+                <div className="text-gray-700 prose prose-sm max-w-none whitespace-pre-line">
                   <TinaMarkdown content={pageData.address} />
                 </div>
               </div>
@@ -53,98 +53,23 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-            <h3 className="font-semibold mb-3">Office Hours</h3>
-            <div className="text-gray-700 prose prose-sm max-w-none">
-              <TinaMarkdown content={pageData.officeHours} />
-            </div>
-          </div>
-        </div>
 
-        <div>
-          <h2 className="text-2xl mb-6">Contact Form</h2>
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block mb-2">
-                Name / 氏名 <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block mb-2">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="affiliation" className="block mb-2">
-                Affiliation / 所属
-              </label>
-              <input
-                type="text"
-                id="affiliation"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="subject" className="block mb-2">
-                Subject / 件名 <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block mb-2">
-                Message / メッセージ <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                rows={6}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Send Message
-            </button>
-
-            <p className="text-sm text-gray-600">
-              ※このフォームはデモ版です。実際の送信機能を実装する場合は、
-              バックエンドAPIとの連携が必要です。
-            </p>
-          </form>
         </div>
       </div>
 
-      {/* Map placeholder */}
+      {/* Map */}
       <div className="mt-12">
-        <h2 className="text-2xl mb-6">Location</h2>
-        <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-          <p className="text-gray-600">
-            Google Maps integration would go here
-          </p>
+        <h2 className="text-2xl mb-6 font-bold">Location</h2>
+        <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.507048707741!2d139.7634147755751!3d35.713746478759724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c2fc33dd137%3A0xef984c2eff28848e!2z55CG5a2m6YOoMeWPt-mkqA!5e0!3m2!1sja!2sjp!4v1773565627078!5m2!1sja!2sjp"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </div>

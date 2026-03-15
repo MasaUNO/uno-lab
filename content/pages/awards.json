@@ -1,0 +1,10 @@
+{
+  "title": "Awards",
+  "blocks": [
+    {
+      "body": "Selected awards and recognitions received by our lab members.",
+      "_template": "richText"
+    }
+  ],
+  "_template": "awards"
+}
