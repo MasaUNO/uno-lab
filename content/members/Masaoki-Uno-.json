@@ -8,6 +8,9 @@
   "image": "/AntarcticaSampling4.jpeg",
   "blocks": [
     {
+      "images": [
+        "/IMGP8091.jpeg"
+      ],
       "_template": "hero"
     },
     {
