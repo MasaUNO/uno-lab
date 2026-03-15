@@ -14,12 +14,6 @@
       "_template": "hero"
     },
     {
-      "images": [
-        "/IMGP8091.jpeg"
-      ],
-      "_template": "imageGrid"
-    },
-    {
       "body": "# **Test Test**\n\nmain text\n",
       "_template": "richText"
     }
