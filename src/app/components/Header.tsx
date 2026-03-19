@@ -36,11 +36,10 @@ export function Header() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm transition-colors ${
-                  location.pathname === item.path
+                className={`text-sm transition-colors ${location.pathname === item.path
                     ? "text-blue-600"
                     : "text-gray-700 hover:text-blue-600"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -64,11 +63,10 @@ export function Header() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block py-2 text-sm transition-colors ${
-                  location.pathname === item.path
+                className={`block py-2 text-sm transition-colors ${location.pathname === item.path
                     ? "text-blue-600"
                     : "text-gray-700 hover:text-blue-600"
-                }`}
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}

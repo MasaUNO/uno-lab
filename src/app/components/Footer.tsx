@@ -10,7 +10,9 @@ export function Footer() {
             <p className="text-gray-400 text-sm">
               Fluid-rock Interaction Laboratory
               <br />
-              University of Tokyo
+              Department of Earth and Planetary Science
+              <br />
+              The University of Tokyo
             </p>
           </div>
           <div>
