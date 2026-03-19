@@ -8,13 +8,10 @@
   "image": "/AntarcticaSampling4.jpeg",
   "blocks": [
     {
-      "_template": "hero"
-    },
-    {
       "images": [
         "/IMGP8091.jpeg"
       ],
-      "_template": "imageGrid"
+      "_template": "hero"
     },
     {
       "body": "# **Test Test**\n\nmain text\n",
