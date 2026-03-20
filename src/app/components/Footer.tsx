@@ -39,7 +39,7 @@ export function Footer() {
               <br />
               Tokyo 113-0033, Japan
               <br />
-              Email: contact.unolab.utokyo@gmail.com
+              Email: contact.unolab.utokyo[at]]gmail.com
             </p>
           </div>
           <div>

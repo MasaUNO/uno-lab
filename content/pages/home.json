@@ -10,7 +10,7 @@
   "aboutText": "いま，地球内部で，あるいは日本列島の地下でなにが起きているのか？我々はそれを理解・予測し，活用することができるのか？　岩石を様々な方法で観察・分析するとその答えが見えてきます．私たちは，野外地質調査，化学分析，水熱反応実験，数値シミュレーション，統計・機械学習を駆使して，地球内部の動的な変動現象を深く理解し，予測・活用することを目指しています．\n",
   "contactInfo": {
     "address": "Uno Laboratory\nDepartment of Earth and Planetary Science\nGraduate School of Science\nThe University of Tokyo\n7-3-1 Hongo, Bunkyo-ku\nTokyo 113-0033, Japan\n",
-    "email": "contact.unolab.utokyo@gmail.com"
+    "email": "contact.unolab.utokyo[at]gmail.com"
   },
   "_template": "home"
 }

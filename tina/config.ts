@@ -7,6 +7,44 @@ const branch =
   process.env.HEAD ||
   "main";
 
+const sharedBlocks: any = [
+  {
+    name: "hero",
+    label: "Hero (Multiple Images)",
+    fields: [{ type: "image", name: "images", label: "Images", list: true }],
+  },
+  {
+    name: "imageGrid",
+    label: "Image Grid",
+    fields: [{ type: "image", name: "images", label: "Images", list: true }],
+  },
+  {
+    name: "video",
+    label: "Video",
+    fields: [{ type: "string", name: "url", label: "Video URL" }],
+  },
+  {
+    name: "richText",
+    label: "Rich Text Section",
+    fields: [{ type: "rich-text", name: "body", label: "Body" }],
+  },
+  {
+    name: "researchCards",
+    label: "Research Topic Cards",
+    fields: [{ type: "string", name: "title", label: "Title (Optional)" }],
+  },
+  {
+    name: "methodCards",
+    label: "Research Method Cards",
+    fields: [{ type: "string", name: "title", label: "Title (Optional)" }],
+  },
+  {
+    name: "fieldCards",
+    label: "Field Cards",
+    fields: [{ type: "string", name: "title", label: "Title (Optional)" }],
+  },
+];
+
 export default defineConfig({
   branch,
 
@@ -50,28 +88,7 @@ export default defineConfig({
             name: "blocks",
             label: "Flexible Blocks",
             list: true,
-            templates: [
-              {
-                name: "hero",
-                label: "Hero (Multiple Images)",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "imageGrid",
-                label: "Image Grid",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "video",
-                label: "Video",
-                fields: [{ type: "string", name: "url", label: "Video URL (YouTube/Vimeo)" }],
-              },
-              {
-                name: "richText",
-                label: "Rich Text Section",
-                fields: [{ type: "rich-text", name: "body", label: "Body" }],
-              },
-            ],
+            templates: sharedBlocks,
           },
         ],
       },
@@ -90,28 +107,7 @@ export default defineConfig({
             name: "blocks",
             label: "Flexible Blocks",
             list: true,
-            templates: [
-              {
-                name: "hero",
-                label: "Hero (Multiple Images)",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "imageGrid",
-                label: "Image Grid",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "video",
-                label: "Video",
-                fields: [{ type: "string", name: "url", label: "Video URL" }],
-              },
-              {
-                name: "richText",
-                label: "Rich Text Section",
-                fields: [{ type: "rich-text", name: "body", label: "Body" }],
-              },
-            ],
+            templates: sharedBlocks,
           },
         ],
       },
@@ -130,28 +126,7 @@ export default defineConfig({
             name: "blocks",
             label: "Flexible Blocks",
             list: true,
-            templates: [
-              {
-                name: "hero",
-                label: "Hero (Multiple Images)",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "imageGrid",
-                label: "Image Grid",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "video",
-                label: "Video",
-                fields: [{ type: "string", name: "url", label: "Video URL" }],
-              },
-              {
-                name: "richText",
-                label: "Rich Text Section",
-                fields: [{ type: "rich-text", name: "body", label: "Body" }],
-              },
-            ],
+            templates: sharedBlocks,
           },
         ],
       },
@@ -174,28 +149,7 @@ export default defineConfig({
             name: "blocks",
             label: "Flexible Blocks",
             list: true,
-            templates: [
-              {
-                name: "hero",
-                label: "Hero (Multiple Images)",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "imageGrid",
-                label: "Image Grid",
-                fields: [{ type: "image", name: "images", label: "Images", list: true }],
-              },
-              {
-                name: "video",
-                label: "Video",
-                fields: [{ type: "string", name: "url", label: "Video URL" }],
-              },
-              {
-                name: "richText",
-                label: "Rich Text Section",
-                fields: [{ type: "rich-text", name: "body", label: "Body" }],
-              },
-            ],
+            templates: sharedBlocks,
           },
         ],
       },
@@ -208,6 +162,13 @@ export default defineConfig({
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
           { type: "rich-text", name: "description", label: "Description" },
           { type: "image", name: "image", label: "Image" },
+          {
+            type: "object",
+            name: "blocks",
+            label: "Flexible Blocks",
+            list: true,
+            templates: sharedBlocks,
+          },
           {
             type: "object",
             name: "relatedTopics",
@@ -299,32 +260,7 @@ export default defineConfig({
                 name: "blocks",
                 label: "Sections",
                 list: true,
-                templates: [
-                  {
-                    name: "hero",
-                    label: "Hero (Multiple Images)",
-                    fields: [{ type: "image", name: "images", label: "Images", list: true }],
-                  },
-                  {
-                    name: "richText",
-                    label: "Rich Text Section",
-                    fields: [{ type: "rich-text", name: "body", label: "Body" }],
-                  },
-                  {
-                    name: "researchCards",
-                    label: "Research Topic Cards",
-                    fields: [
-                      { type: "string", name: "title", label: "Title (Optional)" }
-                    ],
-                  },
-                  {
-                    name: "methodCards",
-                    label: "Research Method Cards",
-                    fields: [
-                      { type: "string", name: "title", label: "Title (Optional)" }
-                    ],
-                  },
-                ],
+                templates: sharedBlocks,
               },
             ]
           },
@@ -346,25 +282,7 @@ export default defineConfig({
                 name: "blocks",
                 label: "Sections",
                 list: true,
-                templates: [
-                  {
-                    name: "hero",
-                    label: "Hero",
-                    fields: [{ type: "image", name: "images", label: "Images", list: true }],
-                  },
-                  {
-                    name: "richText",
-                    label: "Rich Text Section",
-                    fields: [{ type: "rich-text", name: "body", label: "Body" }],
-                  },
-                  {
-                    name: "fieldCards",
-                    label: "Field Cards",
-                    fields: [
-                      { type: "string", name: "title", label: "Title (Optional)" }
-                    ],
-                  },
-                ],
+                templates: sharedBlocks,
               },
             ]
           },
@@ -378,18 +296,7 @@ export default defineConfig({
                 name: "blocks",
                 label: "Sections",
                 list: true,
-                templates: [
-                  {
-                    name: "hero",
-                    label: "Hero",
-                    fields: [{ type: "image", name: "images", label: "Images", list: true }],
-                  },
-                  {
-                    name: "richText",
-                    label: "Rich Text Section",
-                    fields: [{ type: "rich-text", name: "body", label: "Body" }],
-                  },
-                ],
+                templates: sharedBlocks,
               },
             ]
           },

@@ -6,17 +6,23 @@ import { BlockRenderer } from "../components/BlockRenderer";
 
 export function Fields() {
   const [fields, setFields] = useState<any[]>([]);
+  const [researchTopics, setResearchTopics] = useState<any[]>([]);
+  const [researchMethods, setResearchMethods] = useState<any[]>([]);
   const [pageData, setPageData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [fieldsRes, pageRes] = await Promise.all([
+        const [fieldsRes, topicsRes, methodsRes, pageRes] = await Promise.all([
           client.queries.fieldsConnection(),
+          client.queries.research_topicsConnection(),
+          client.queries.research_methodsConnection(),
           client.queries.pages({ relativePath: "fields_page.json" })
         ]);
         setFields(fieldsRes.data.fieldsConnection.edges?.map(e => ({ id: e?.node?.id, ...e?.node })) || []);
+        setResearchTopics(topicsRes.data.research_topicsConnection.edges?.map(e => ({ id: e?.node?.id, ...e?.node })) || []);
+        setResearchMethods(methodsRes.data.research_methodsConnection.edges?.map(e => ({ id: e?.node?.id, ...e?.node })) || []);
         setPageData(pageRes.data.pages);
       } catch (error) {
         console.error("Error fetching Tina data", error);
@@ -35,7 +41,12 @@ export function Fields() {
         <h1 className="text-4xl font-bold mb-8">{pageData?.title || "Field Survey Areas"}</h1>
       </div>
 
-      <BlockRenderer blocks={pageData?.blocks} fields={fields} />
+      <BlockRenderer 
+        blocks={pageData?.blocks} 
+        fields={fields} 
+        researchTopics={researchTopics}
+        researchMethods={researchMethods}
+      />
     </div>
   );
 }

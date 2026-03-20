@@ -29,46 +29,41 @@ export function BlockRenderer({
   return (
     <div className="space-y-16">
       {blocks.map((block, i) => {
-        switch (block.__typename) {
-          case "NewsBlocksHero":
-          case "Research_topicsBlocksHero":
-          case "Research_methodsBlocksHero":
-          case "MembersBlocksHero":
-          case "PagesAboutBlocksHero":
-          case "PagesProspective_studentsBlocksHero":
-          case "PagesFields_pageBlocksHero":
-            return <HeroBlock key={i} images={block.images} />;
-          case "NewsBlocksImageGrid":
-          case "Research_topicsBlocksImageGrid":
-          case "Research_methodsBlocksImageGrid":
-          case "MembersBlocksImageGrid":
-            return <ImageGridBlock key={i} images={block.images} />;
-          case "NewsBlocksVideo":
-          case "Research_topicsBlocksVideo":
-          case "Research_methodsBlocksVideo":
-          case "MembersBlocksVideo":
-            return <VideoBlock key={i} url={block.url} />;
-          case "NewsBlocksRichText":
-          case "Research_topicsBlocksRichText":
-          case "Research_methodsBlocksRichText":
-          case "MembersBlocksRichText":
-          case "PagesAboutBlocksRichText":
-          case "PagesProspective_studentsBlocksRichText":
-          case "PagesFields_pageBlocksRichText":
-            return (
-              <div key={i} className="prose prose-lg max-w-none">
-                <TinaMarkdown content={block.body} />
-              </div>
-            );
-          case "PagesAboutBlocksResearchCards":
-            return <ResearchCardsBlock key={i} title={block.title} topics={researchTopics} />;
-          case "PagesAboutBlocksMethodCards":
-            return <MethodCardsBlock key={i} title={block.title} methods={researchMethods} />;
-          case "PagesFields_pageBlocksFieldCards":
-            return <FieldCardsBlock key={i} title={block.title} fields={fields} />;
-          default:
-            return null;
+        const type = block.__typename || "";
+        
+        if (type.endsWith("BlocksHero")) {
+          return <HeroBlock key={i} images={block.images} />;
         }
+        
+        if (type.endsWith("BlocksImageGrid")) {
+          return <ImageGridBlock key={i} images={block.images} />;
+        }
+        
+        if (type.endsWith("BlocksVideo")) {
+          return <VideoBlock key={i} url={block.url} />;
+        }
+        
+        if (type.endsWith("BlocksRichText")) {
+          return (
+            <div key={i} className="prose prose-lg max-w-none">
+              <TinaMarkdown content={block.body} />
+            </div>
+          );
+        }
+        
+        if (type.endsWith("BlocksResearchCards")) {
+          return <ResearchCardsBlock key={i} title={block.title} topics={researchTopics} />;
+        }
+        
+        if (type.endsWith("BlocksMethodCards")) {
+          return <MethodCardsBlock key={i} title={block.title} methods={researchMethods} />;
+        }
+        
+        if (type.endsWith("BlocksFieldCards")) {
+          return <FieldCardsBlock key={i} title={block.title} fields={fields} />;
+        }
+
+        return null;
       })}
     </div>
   );

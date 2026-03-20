@@ -1,0 +1,12 @@
+{
+  "title": "Fields (Survey Areas)",
+  "blocks": [
+    {
+      "_template": "hero"
+    },
+    {
+      "_template": "fieldCards"
+    }
+  ],
+  "_template": "fields_page"
+}
