@@ -6,16 +6,16 @@
   "blocks": [
     {
       "images": [
+        "/IMG_0560.jpg"
+      ],
+      "_template": "imageGrid"
+    },
+    {
+      "images": [
         "/IMG_0566.jpg",
         "/IMG_0567.jpg"
       ],
       "_template": "hero"
-    },
-    {
-      "images": [
-        "/IMG_0560.jpg"
-      ],
-      "_template": "imageGrid"
     }
   ]
 }
