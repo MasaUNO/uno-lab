@@ -10,6 +10,12 @@
         "/IMG_0567.jpg"
       ],
       "_template": "hero"
+    },
+    {
+      "images": [
+        "/IMG_0560.jpg"
+      ],
+      "_template": "imageGrid"
     }
   ]
 }
