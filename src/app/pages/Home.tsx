@@ -39,8 +39,10 @@ export function Home() {
         const pageRes = await client.queries.pages({ relativePath: "home.json" });
         setPageData(pageRes.data.pages);
 
-        const newsRes = await client.queries.newsConnection({ first: 3, sort: "date" });
-        setNewsList(newsRes.data.newsConnection.edges?.map((e: any) => ({ id: e?.node?.id, ...e?.node })) || []);
+        const newsRes = await client.queries.newsConnection({ sort: "date" });
+        const newsData = newsRes.data.newsConnection.edges?.map((e: any) => ({ id: e?.node?.id, ...e?.node })) || [];
+        newsData.sort((a, b) => new Date(b.date as string).getTime() - new Date(a.date as string).getTime());
+        setNewsList(newsData.slice(0, 3));
 
         const topicsRes = await client.queries.research_topicsConnection({ first: 3 });
         setTopicsList(topicsRes.data.research_topicsConnection.edges?.map((e: any) => ({ id: e?.node?.id, ...e?.node })) || []);
