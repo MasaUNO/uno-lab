@@ -5,5 +5,11 @@
   "bio": "2024.4-2026.3 修士\n\n2023.4-2024.4 学部\n",
   "order": 2,
   "research": "\"Experimental study of silica vein formation induced by fluid-pressure drop under temperature conditions of fast and slow seismogenic zones\" 「ファスト地震およびスロー地震発生域の温度条件下での流体圧降下に起因するシリカ脈形成に関する実験的研究」",
-  "image": "/RToda.jpg"
+  "image": "/RToda.jpg",
+  "blocks": [
+    {
+      "body": "**修士論文（学術）**\n\n**\"Experimental study of silica vein formation induced by fluid-pressure drop under temperature conditions of fast and slow seismogenic zones\"**\n\n**「ファスト地震およびスロー地震発生域の温度条件下での流体圧降下に起因するシリカ脈形成に関する実験的研究」**\n",
+      "_template": "richText"
+    }
+  ]
 }
