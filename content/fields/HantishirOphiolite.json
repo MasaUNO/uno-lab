@@ -1,5 +1,16 @@
 {
   "title": "モンゴル　ハンタイシル・オフィオライト",
   "description": "Coming soon!\n",
-  "image": "/Naran.JPG"
+  "image": "/Naran.JPG",
+  "blocks": [
+    {
+      "images": [
+        "/20220826_Zavkahn.jpg",
+        "/P8300642.JPG",
+        "/P8100005.JPG",
+        ""
+      ],
+      "_template": "hero"
+    }
+  ]
 }
