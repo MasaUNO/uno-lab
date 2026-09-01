@@ -12,8 +12,25 @@ export function Awards() {
       try {
         const res = await client.queries.awardsConnection({ sort: "year" });
         const awardsData = res.data.awardsConnection.edges?.map(e => e?.node) || [];
-        awardsData.sort((a, b) => (b?.year || 0) - (a?.year || 0));
-        setAwards(awardsData);
+        
+        // Group by year to ensure each year only appears once
+        const groupedMap = new Map<number, any[]>();
+        for (const item of awardsData) {
+          if (!item || item.year == null) continue;
+          const yr = Number(item.year);
+          if (!groupedMap.has(yr)) {
+            groupedMap.set(yr, []);
+          }
+          groupedMap.get(yr)!.push(item);
+        }
+
+        const sortedYears = Array.from(groupedMap.keys()).sort((a, b) => b - a);
+        const groupedAwards = sortedYears.map(yr => ({
+          year: yr,
+          itemsList: groupedMap.get(yr)!
+        }));
+
+        setAwards(groupedAwards);
       } catch (error) {
         console.error("Error fetching Tina data", error);
       } finally {
@@ -37,12 +54,14 @@ export function Awards() {
           <div className="space-y-12">
             {awards.length > 0 ? (
               awards.map((yearGroup) => (
-                <section key={yearGroup.year || yearGroup.id}>
+                <section key={yearGroup.year}>
                   <h3 className="text-2xl mb-6 pb-2 border-b-2 border-gray-200 font-bold">
                     {yearGroup.year}
                   </h3>
-                  <div className="prose prose-lg max-w-none text-gray-700">
-                    <TinaMarkdown content={yearGroup.items} />
+                  <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
+                    {yearGroup.itemsList.map((item: any, idx: number) => (
+                      <TinaMarkdown key={item.id || idx} content={item.items} />
+                    ))}
                   </div>
                 </section>
               ))

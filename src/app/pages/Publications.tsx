@@ -12,9 +12,25 @@ export function Publications() {
       try {
         const res = await client.queries.publicationsConnection({ sort: "year" });
         const pubData = res.data.publicationsConnection.edges?.map(e => e?.node) || [];
-        // Sort descending by year
-        pubData.sort((a, b) => (b?.year || 0) - (a?.year || 0));
-        setPublications(pubData);
+        
+        // Group by year to ensure each year only appears once
+        const groupedMap = new Map<number, any[]>();
+        for (const item of pubData) {
+          if (!item || item.year == null) continue;
+          const yr = Number(item.year);
+          if (!groupedMap.has(yr)) {
+            groupedMap.set(yr, []);
+          }
+          groupedMap.get(yr)!.push(item);
+        }
+
+        const sortedYears = Array.from(groupedMap.keys()).sort((a, b) => b - a);
+        const groupedPubs = sortedYears.map(yr => ({
+          year: yr,
+          itemsList: groupedMap.get(yr)!
+        }));
+
+        setPublications(groupedPubs);
       } catch (error) {
         console.error("Error fetching Tina data", error);
       } finally {
@@ -37,12 +53,14 @@ export function Publications() {
           <h2 className="text-3xl font-bold mb-12">Journal Articles</h2>
           <div className="space-y-12">
             {publications.map((yearGroup) => (
-              <section key={yearGroup.year || yearGroup.id}>
+              <section key={yearGroup.year}>
                 <h3 className="text-2xl mb-6 pb-2 border-b-2 border-gray-200 font-bold">
                   {yearGroup.year}
                 </h3>
-                <div className="prose prose-lg max-w-none text-gray-700">
-                  <TinaMarkdown content={yearGroup.items} />
+                <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
+                  {yearGroup.itemsList.map((item: any, idx: number) => (
+                    <TinaMarkdown key={item.id || idx} content={item.items} />
+                  ))}
                 </div>
               </section>
             ))}

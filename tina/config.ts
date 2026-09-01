@@ -190,8 +190,13 @@ export default defineConfig({
         label: "Publications (by Year)",
         path: "content/publications",
         format: "json",
+        ui: {
+          filename: {
+            slugify: (values) => (values?.year ? `${values.year}` : "new_publications"),
+          },
+        },
         fields: [
-          { type: "number", name: "year", label: "Year", required: true },
+          { type: "number", name: "year", label: "Year", isTitle: true, required: true },
           { type: "rich-text", name: "items", label: "Publication Items" },
         ],
       },
@@ -200,8 +205,13 @@ export default defineConfig({
         label: "Awards (by Year)",
         path: "content/awards",
         format: "json",
+        ui: {
+          filename: {
+            slugify: (values) => (values?.year ? `Awards${values.year}` : "new_awards"),
+          },
+        },
         fields: [
-          { type: "number", name: "year", label: "Year", required: true },
+          { type: "number", name: "year", label: "Year", isTitle: true, required: true },
           { type: "rich-text", name: "items", label: "Awards Items" },
         ],
       },
