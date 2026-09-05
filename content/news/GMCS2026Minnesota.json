@@ -3,7 +3,7 @@
   "date": "2026-06-03T09:34:37.268Z",
   "excerpt": "アメリカエネルギー省の鉱物炭酸塩化研究グループ(GMCS)の研究集会に招待され，基調講演をしてきました＠ミネソタ大",
   "content": "アメリカエネルギー省の鉱物炭酸塩化研究グループGeo-processes in Mineral Carbon Storage (GMCS)の研究集会に参加してきました！\n鉱物炭酸塩化を加速するプロセスについて基調講演をしてきました．\n\nGMCSの中心メンバーのEmmanuel DetournayやPeter Kang(ミネソタ大), Todd Shaeff(Pacific Northwest国立研究所)，大規模な二酸化炭素鉱物固定を提唱したPeter KelemenやJuerg Matter, ヨーロッパでの玄武岩中へのCO2貯留を牽引するFrancois Renard, カナダ代表のBen Tutolo，地化学反応輸送モデルに力学系の導入を進めているMengsu Hu(Lawrence Berkeley国立研究所)，ミネソタ大の活気に満ちた若手研究者など，多くの鉱物炭酸塩化を牽引する研究者と議論を重ねることが出来ました！\n\nすっかり写真を撮り忘れてしまいましたが，地中での大規模な二酸化炭素鉱物固定を実現するために，岩盤力学・資源工学・化学工学・地質学・岩石学などの研究者が集い知恵を絞り合う，非常に密度の濃い３日間でした．\n",
-  "image": "/IMG_1059-2.jpg",
+  "image": "/IMG_1059-3.jpg",
   "blocks": [
     {
       "images": [
@@ -11,6 +11,10 @@
         "/IMG_1064.jpg"
       ],
       "_template": "hero"
+    },
+    {
+      "body": "ミネソタ大の広大なキャンパス（上）とGMCS workshopの開催されたKeller Hall（下）\n",
+      "_template": "richText"
     },
     {
       "images": [
